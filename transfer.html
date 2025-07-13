@@ -42,9 +42,11 @@
                     <label for="transferType">Tipo de Transferência</label>
                     <select id="transferType" name="transferType" required>
                         <option value="">Selecione...</option>
-                        <option value="internal_cc_ci">Interna: Conta Corrente para Conta Investimento</option>
-                        <option value="internal_ci_cc">Interna: Conta Investimento para Conta Corrente</option>
-                        <option value="external_cc_cc">Externa: Conta Corrente para Outro Usuário</option>
+                        <option value="internal_CORRENTE_INVESTIMENTO">Interna: Conta Corrente para Conta Investimento
+                        </option>
+                        <option value="internal_INVESTIMENTO_CORRENTE">Interna: Conta Investimento para Conta Corrente
+                        </option>
+                        <option value="external_CORRENTE_CORRENTE">Externa: Conta Corrente para Outro Usuário</option>
                     </select>
                 </div>
 
@@ -76,7 +78,6 @@
         <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
-
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');

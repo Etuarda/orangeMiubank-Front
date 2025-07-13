@@ -1,1 +1,168 @@
- 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiuBank - Relatórios</title>
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/layout.css">
+    <link rel="stylesheet" href="src/css/theme.css">
+    <link rel="stylesheet" href="src/css/components.css">
+    <link rel="stylesheet" href="src/css/utilities.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MiuBank</h1>
+            <nav class="navbar">
+                <button class="navbar-toggler" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="transfer.html" class="nav-link">Transferir</a></li>
+                    <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
+                    <li><a href="reports.html" class="nav-link active">Relatórios</a></li>
+                    <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
+                    <li><button id="contrastModeToggle" class="btn-icon"
+                            aria-label="Alternar modo de alto contraste">контраст</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container content-page">
+        <section class="card form-section">
+            <h1 class="text-center">Gerar Relatórios Financeiros</h1>
+            <p class="text-center text-secondary">Acesse extratos, resumos e relatórios de IR.</p>
+
+            <div class="report-section u-margin-top-md">
+                <h3>Extrato de Conta</h3>
+                <form id="statementForm" class="form-inline">
+                    <div class="form-group">
+                        <label for="statementAccountType">Tipo de Conta:</label>
+                        <select id="statementAccountType" name="accountType">
+                            <option value="CORRENTE">Conta Corrente</option>
+                            <option value="INVESTIMENTO">Conta Investimento</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="statementStartDate">De:</label>
+                        <input type="date" id="statementStartDate" name="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="statementEndDate">Até:</label>
+                        <input type="date" id="statementEndDate" name="endDate">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Gerar Extrato</button>
+                </form>
+                <div id="statementMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+                <div id="statementResult" class="u-margin-top-md">
+                    <h4>Saldo Atual: <span id="currentStatementBalance">R$ 0,00</span></h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="statementTableBody">
+                            <tr>
+                                <td colspan="4" class="text-center text-secondary">Nenhuma movimentação para o
+                                    período/conta.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="report-section u-margin-top-lg">
+                <h3>Resumo de Investimentos</h3>
+                <button id="generateInvestmentSummaryBtn" class="btn btn-secondary">Gerar Resumo</button>
+                <div id="investmentSummaryMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+                <div id="investmentSummaryResult" class="u-margin-top-md">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ativo</th>
+                                <th>Tipo</th>
+                                <th>Qtd.</th>
+                                <th>Preço Compra</th>
+                                <th>Preço Atual</th>
+                                <th>Valor Atual</th>
+                                <th>Lucro/Prejuízo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="investmentSummaryTableBody">
+                            <tr>
+                                <td colspan="7" class="text-center text-secondary">Nenhum investimento ativo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="report-section u-margin-top-lg">
+                <h3>Relatório de Imposto de Renda</h3>
+                <form id="taxReportForm" class="form-inline">
+                    <div class="form-group">
+                        <label for="taxReportYear">Ano:</label>
+                        <input type="number" id="taxReportYear" name="year" placeholder="Ex: 2024">
+                    </div>
+                    <div class="form-group">
+                        <label for="taxReportStartDate">De:</label>
+                        <input type="date" id="taxReportStartDate" name="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="taxReportEndDate">Até:</label>
+                        <input type="date" id="taxReportEndDate" name="endDate">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Gerar Relatório de IR</button>
+                </form>
+                <div id="taxReportMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+                <div id="taxReportResult" class="u-margin-top-md">
+                    <h4>Período: <span id="taxReportPeriod">Todos os Períodos</span></h4>
+                    <p>Lucro Total Consolidado: <span id="totalProfitIR">R$ 0,00</span></p>
+                    <p>Imposto Total Pago: <span id="totalTaxPaidIR">R$ 0,00</span></p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ativo</th>
+                                <th>Tipo</th>
+                                <th>Qtd.</th>
+                                <th>Lucro Op.</th>
+                                <th>Imposto Op.</th>
+                                <th>Data Venda</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taxReportTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center text-secondary">Nenhuma operação tributável.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+        <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
+                class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
+    </footer>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="src/js/api.js" type="module"></script>
+    <script src="src/js/main.js" type="module"></script>
+    <script src="src/js/reports.js" type="module"></script>
+</body>
+
+</html>

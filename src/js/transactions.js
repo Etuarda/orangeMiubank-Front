@@ -84,8 +84,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         await loadAllBalances(currentAccountBalanceTransferElem, investmentAccountBalanceTransferElem);
 
         transferTypeSelect.addEventListener('change', () => {
-            if (transferTypeSelect.value === 'external_cc_cc') {
+            // Mostra ou esconde o campo CPF dependendo do tipo de transferência selecionado
+            if (transferTypeSelect.value === 'external_CORRENTE_CORRENTE') {
                 recipientCpfGroup.classList.remove('u-hidden');
+                // Garante que o campo CPF é requerido apenas para transferências externas
                 recipientCpfGroup.querySelector('input').setAttribute('required', 'required');
             } else {
                 recipientCpfGroup.classList.add('u-hidden');
@@ -99,7 +101,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const amount = parseFloat(transferForm.elements.amount.value);
             const transferType = transferForm.elements.transferType.value;
-            const recipientCpf = transferForm.elements.recipientCpf ? transferForm.elements.recipientCpf.value : null;
+            // Coleta o CPF apenas se o campo estiver visível e preenchido
+            const recipientCpf = transferType === 'external_CORRENTE_CORRENTE' ? transferForm.elements.recipientCpf.value : null;
 
             if (isNaN(amount) || amount <= 0) {
                 showMessage(transferMessage, 'Por favor, insira um valor de transferência válido.', 'error');
@@ -109,19 +112,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                 showMessage(transferMessage, 'Por favor, selecione o tipo de transferência.', 'error');
                 return;
             }
-            if (transferType === 'external_cc_cc' && (!recipientCpf || !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(recipientCpf))) {
-                showMessage(transferMessage, 'Por favor, insira um CPF de destinatário válido (XXX.XXX.XXX-XX).', 'error');
+            // Validação de CPF para transferências externas
+            if (transferType === 'external_CORRENTE_CORRENTE' && (!recipientCpf || !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(recipientCpf))) {
+                showMessage(transferMessage, 'Por favor, insira um CPF de destinatário válido (XXX.XXX.XXX-XX) para transferências externas.', 'error');
                 return;
             }
 
             try {
                 let response;
                 if (transferType.startsWith('internal')) {
-                    const [_, fromAccountTypeAbbr, toAccountTypeAbbr] = transferType.split('_');
-                    const fromAccountType = fromAccountTypeAbbr.toUpperCase();
-                    const toAccountType = toAccountTypeAbbr.toUpperCase();
+                    // Para transferências internas, as partes do valor do select já são os tipos exatos
+                    const [_, fromAccountType, toAccountType] = transferType.split('_');
                     response = await api.accounts.transferInternal({ amount, fromAccountType, toAccountType });
-                } else if (transferType === 'external_cc_cc') {
+                } else if (transferType === 'external_CORRENTE_CORRENTE') {
+                    // Para transferências externas, usamos o CPF do destinatário
                     response = await api.accounts.transferExternal({ amount, recipientCpf });
                 } else {
                     showMessage(transferMessage, 'Tipo de transferência inválido.', 'error');
@@ -134,13 +138,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 await loadAllBalances(currentAccountBalanceTransferElem, investmentAccountBalanceTransferElem); // Atualiza os saldos
             } catch (error) {
                 console.error('Erro ao realizar transferência:', error);
+                // Exibe a mensagem de erro vinda da API
                 showMessage(transferMessage, error.message || 'Erro ao realizar transferência.', 'error');
             }
         });
     }
 });
 
-// Funções exportadas para o Dashboard e outras telas (já presentes na última resposta)
+// Funções exportadas para o Dashboard
 export async function loadDashboardData() {
     const currentAccountBalanceElem = document.getElementById('currentAccountBalance');
     const investmentAccountBalanceElem = document.getElementById('investmentAccountBalance');
@@ -153,6 +158,7 @@ export async function loadDashboardData() {
     }
 
     try {
+        // Carrega e exibe os saldos
         const balances = await api.accounts.getBalances();
         if (currentAccountBalanceElem) {
             currentAccountBalanceElem.textContent = formatCurrency(balances.corrente);
@@ -161,19 +167,21 @@ export async function loadDashboardData() {
             investmentAccountBalanceElem.textContent = formatCurrency(balances.investimento);
         }
 
+        // Carrega e exibe as últimas movimentações da Conta Corrente
         const statementResponse = await api.reports.getStatement('CORRENTE');
         const movements = statementResponse.statement || [];
 
         if (transactionHistoryBody) {
-            transactionHistoryBody.innerHTML = '';
+            transactionHistoryBody.innerHTML = ''; // Limpa qualquer placeholder
 
             if (movements.length > 0) {
+                // Pega os 5 últimos, ordenados pela data mais recente (se a API retornar do mais antigo para o mais novo, reverse)
                 const latestMovements = movements.slice(-5).reverse();
 
                 latestMovements.forEach(move => {
                     const row = document.createElement('tr');
                     const date = new Date(move.date).toLocaleDateString('pt-BR');
-                    const valueClass = move.isDebit ? 'text-error' : 'text-success';
+                    const valueClass = move.isDebit ? 'text-error' : 'text-success'; // Adiciona classe para cor
 
                     row.innerHTML = `
                         <td>${date}</td>
@@ -192,6 +200,7 @@ export async function loadDashboardData() {
 
     } catch (error) {
         console.error('Erro ao carregar dados do dashboard:', error);
+        // Exibe uma mensagem de erro na dashboard se falhar
         const mainContent = document.querySelector('.main-content');
         if (mainContent) {
             let errorMessageDiv = document.getElementById('dashboardErrorMessage');
@@ -229,7 +238,6 @@ async function loadAllBalances(currentElem, investmentElem) {
         if (investmentElem) investmentElem.textContent = 'Erro ao carregar.';
     }
 }
-
 
 // Função auxiliar para mapear tipos de movimentação para algo mais legível (usada no dashboard)
 function mapMovementType(type) {
