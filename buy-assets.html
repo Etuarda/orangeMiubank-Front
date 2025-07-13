@@ -13,80 +13,102 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
-            <h1 class="logo">MiuBank</h1>
-            <nav class="navbar">
-                <button class="navbar-toggler" aria-label="Abrir menu">
-                    <span></span><span></span><span></span>
+            <h1 class="logo" aria-label="Logotipo MiuBank">MiuBank</h1>
+            <nav class="navbar" role="navigation" aria-label="Menu Principal">
+                <button class="navbar-toggler" aria-label="Abrir e fechar menu de navegação">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="transfer.html" class="nav-link">Transferir</a></li>
-                    <li><a href="buy-assets.html" class="nav-link active">Investir</a></li>
-                    <li><a href="reports.html" class="nav-link">Relatórios</a></li>
-                    <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
+                    <li><a href="transfer.html" class="nav-link">Transferir Dinheiro</a></li>
+                    <li><a href="buy-assets.html" class="nav-link active" aria-current="page">Investir em Ativos</a>
+                    </li>
+                    <li><a href="reports.html" class="nav-link">Ver Relatórios Financeiros</a></li>
+                    <li><a href="#" id="logoutButton" class="nav-link">Sair da Conta</a></li>
                     <li><button id="contrastModeToggle" class="btn-icon"
-                            aria-label="Alternar modo de alto contraste">контраст</button></li>
+                            aria-label="Alternar modo de alto contraste">Alto Contraste</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container content-page">
-        <section class="card form-section">
+    <main class="container content-page" role="main">
+        <section class="card form-section" role="region" aria-label="Seção de Compra de Ativos">
             <h1 class="text-center">Comprar Ativos</h1>
             <p class="text-center text-secondary">Utilize seu saldo de Conta Investimento.</p>
-            <form id="buyAssetForm" class="form">
+            <form id="buyAssetForm" class="form" aria-label="Formulário para compra de ativos">
                 <div class="form-group">
-                    <label for="assetSelect">Ativo Disponível</label>
-                    <select id="assetSelect" name="assetId" required>
+                    <label for="assetSelect">Ativo Disponível para Compra</label>
+                    <select id="assetSelect" name="assetId" required aria-describedby="assetPrice estimatedTotalCost">
                         <option value="">Carregando ativos...</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="quantity">Quantidade</label>
-                    <input type="number" id="quantity" name="quantity" placeholder="Ex: 10" min="1" required>
+                    <label for="quantity">Quantidade a Comprar</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Ex: 10" min="1" required
+                        aria-label="Insira a quantidade de ativos a ser comprada">
                 </div>
-                <p>Preço unitário: <span id="assetPrice">R$ 0,00</span></p>
-                <p>Custo total estimado: <span id="estimatedTotalCost">R$ 0,00</span></p>
-                <p>Saldo Conta Investimento: <span id="investmentAccountBalanceBuy">Carregando...</span></p>
+                <p>Preço unitário do ativo selecionado: <span id="assetPrice" aria-live="polite" aria-atomic="true">R$
+                        0,00</span></p>
+                <p>Custo total estimado da compra: <span id="estimatedTotalCost" aria-live="polite"
+                        aria-atomic="true">R$ 0,00</span></p>
+                <p>Seu saldo atual na Conta Investimento: <span id="investmentAccountBalanceBuy" aria-live="polite"
+                        aria-atomic="true">Carregando...</span></p>
 
-                <button type="submit" class="btn btn-primary">Confirmar Compra</button>
-                <div id="buyAssetMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+                <button type="submit" class="btn btn-primary"
+                    aria-label="Confirmar a compra dos ativos selecionados">Confirmar Compra</button>
+                <div id="buyAssetMessage" class="message u-margin-top-md u-hidden" role="alert" aria-live="polite"
+                    aria-atomic="true"></div>
             </form>
         </section>
 
-        <section class="card form-section u-margin-top-md">
+        <section class="card form-section u-margin-top-md" role="region"
+            aria-label="Seção de Meus Investimentos Ativos">
             <h1 class="text-center">Meus Investimentos</h1>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Ativo</th>
-                        <th>Tipo</th>
-                        <th>Qtd.</th>
-                        <th>Preço Compra</th>
-                        <th>Preço Atual</th>
-                        <th>Valor Atual</th>
-                        <th>Lucro/Prejuízo</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="userInvestmentsTableBody">
-                    <tr>
-                        <td colspan="8" class="text-center text-secondary">Nenhum investimento ativo.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive" role="group" aria-label="Tabela de Investimentos Ativos">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ativo</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Preço de Compra</th>
+                            <th scope="col">Preço Atual</th>
+                            <th scope="col">Valor Atual Total</th>
+                            <th scope="col">Lucro ou Prejuízo</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userInvestmentsTableBody">
+                        <tr>
+                            <td colspan="8" class="text-center text-secondary">Nenhum investimento ativo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2025 MiuBank. desenvolvido por Eduarda Silva Santos</p>
         <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
 
+    <!-- INÍCIO DO BLOCO VLIBRAS -->
+    <div vw class="enabled" role="region" aria-label="Widget VLibras de acessibilidade em Libras">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper aria-label="Conteúdo do plugin VLibras">
+            <div class="vw-plugin-top-wrapper" aria-hidden="true"></div>
+        </div>
+    </div>
+    <!-- FIM DO BLOCO VLIBRAS -->
+
+    <!-- Scripts VLibras e seus próprios scripts, no FINAL do body -->
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');

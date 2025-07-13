@@ -1,48 +1,46 @@
 /* src/css/base.css */
 
-/* Importação de fontes (Exemplos: substitua pelas suas escolhas de fontes retro) */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-/* Para títulos */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-/* Para corpo de texto */
+/* Importação de fontes: "Press Start 2P" para títulos, "Roboto Mono" para corpo */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap');
 
-/* Reset básico e box-sizing */
+/* Reset básico para consistência entre navegadores */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     font-size: 100%;
-    /* Base para rem */
+    /* Define 1rem como 16px */
+    scroll-behavior: smooth;
+    /* Rolagem suave */
 }
 
 body {
-    margin: 0;
     font-family: 'Roboto Mono', monospace;
-    /* Fonte do corpo de texto */
+    /* Fonte principal para o corpo de texto */
     line-height: 1.6;
     color: var(--color-text);
+    /* Cor de texto definida em theme.css */
     background-color: var(--color-background);
+    /* Cor de fundo definida em theme.css */
     min-height: 100vh;
+    /* Ocupa a altura total da viewport */
     display: flex;
     flex-direction: column;
+    /* Para o footer sempre ficar no final */
     transition: background-color 0.3s ease, color 0.3s ease;
+    /* Transições suaves para modo contraste */
+    -webkit-font-smoothing: antialiased;
+    /* Suaviza fontes no WebKit */
+    -moz-osx-font-smoothing: grayscale;
+    /* Suaviza fontes no Firefox para macOS */
 }
 
-/* Estilos globais para links */
-a {
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--color-secondary);
-}
-
-/* Títulos */
+/* Estilos semânticos básicos para legibilidade */
 h1,
 h2,
 h3,
@@ -50,37 +48,64 @@ h4,
 h5,
 h6 {
     font-family: 'Press Start 2P', cursive;
-    /* Fonte para títulos */
+    /* Fonte para títulos com estilo retro */
     color: var(--color-heading);
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    /* Cor de título definida em theme.css */
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    /* Sombra sutil para um toque visual */
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
 }
 
+/* Tamanhos de fonte responsivos via layout.css */
 h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 h3 {
-    font-size: 1.75rem;
+    font-size: 1.8rem;
 }
 
 h4 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
-/* Placeholder para o VLibras para evitar obstrução */
-body #vlibras {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+p {
+    margin-bottom: 1em;
 }
 
-/* Esconder conteúdo para leitores de tela */
+/* Links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* Listas sem marcadores */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Imagens responsivas por padrão */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Remove espaço extra abaixo de imagens */
+}
+
+/* Classes para leitores de tela (SR-Only) */
 .sr-only {
     position: absolute;
     width: 1px;

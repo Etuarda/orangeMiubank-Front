@@ -13,49 +13,60 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
-            <h1 class="logo">MiuBank</h1>
-            <nav class="navbar">
-                <button class="navbar-toggler" aria-label="Abrir menu">
-                    <span></span><span></span><span></span>
+            <h1 class="logo" aria-label="Logotipo MiuBank">MiuBank</h1>
+            <nav class="navbar" role="navigation" aria-label="Menu Principal">
+                <button class="navbar-toggler" aria-label="Abrir e fechar menu de navegação">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="transfer.html" class="nav-link active">Transferir</a></li>
-                    <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
-                    <li><a href="reports.html" class="nav-link">Relatórios</a></li>
-                    <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
+                    <li><a href="transfer.html" class="nav-link active" aria-current="page">Transferir Dinheiro</a></li>
+                    <li><a href="buy-assets.html" class="nav-link">Investir em Ativos</a></li>
+                    <li><a href="reports.html" class="nav-link">Ver Relatórios Financeiros</a></li>
+                    <li><a href="#" id="logoutButton" class="nav-link">Sair da Conta</a></li>
                     <li><button id="contrastModeToggle" class="btn-icon"
-                            aria-label="Alternar modo de alto contraste">контраст</button></li>
+                            aria-label="Alternar modo de alto contraste">Alto Contraste</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container content-page">
-        <section class="card form-section">
+    <main class="container content-page" role="main">
+        <section class="card form-section" role="region" aria-label="Seção para realizar depósito na conta corrente">
             <h1 class="text-center">Realizar Depósito</h1>
-            <p class="text-center text-secondary">Deposite na sua Conta Corrente.</p>
-            <form id="depositForm" class="form">
+            <p class="text-center text-secondary">Deposite fundos na sua Conta Corrente.</p>
+            <form id="depositForm" class="form" aria-label="Formulário de depósito">
                 <div class="form-group">
-                    <label for="depositAmount">Valor do Depósito (R$)</label>
+                    <label for="depositAmount">Valor do Depósito em Reais</label>
                     <input type="number" id="depositAmount" name="amount" placeholder="Ex: 100.00" step="0.01"
-                        min="0.01" required>
+                        min="0.01" required aria-label="Insira o valor a ser depositado">
                 </div>
-                <p>Saldo atual da Conta Corrente: <span id="currentAccountBalanceDeposit">Carregando...</span></p>
-                <button type="submit" class="btn btn-primary">Confirmar Depósito</button>
-                <div id="depositMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+                <p>Seu saldo atual na Conta Corrente: <span id="currentAccountBalanceDeposit" aria-live="polite"
+                        aria-atomic="true">Carregando...</span></p>
+                <button type="submit" class="btn btn-primary" aria-label="Confirmar operação de depósito">Confirmar
+                    Depósito</button>
+                <div id="depositMessage" class="message u-margin-top-md u-hidden" role="alert" aria-live="polite"
+                    aria-atomic="true"></div>
             </form>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2025 MiuBank. desenvolvido por Eduarda Silva Santos</p>
         <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
 
+    <div vw class="enabled" role="region" aria-label="Widget VLibras de acessibilidade em Libras">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper aria-label="Conteúdo do plugin VLibras">
+            <div class="vw-plugin-top-wrapper" aria-hidden="true"></div>
+        </div>
+    </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');

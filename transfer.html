@@ -27,7 +27,7 @@
                     <li><a href="reports.html" class="nav-link">Relatórios</a></li>
                     <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
                     <li><button id="contrastModeToggle" class="btn-icon"
-                            aria-label="Alternar modo de alto contraste">контраст</button></li>
+                            aria-label="Alternar modo de alto contraste">Alto Contraste</button></li>
                 </ul>
             </nav>
         </div>
@@ -74,10 +74,17 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+        <p>&copy; 2025 MiuBank. desenvolvido por Eduarda Silva Santos</p>
         <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');

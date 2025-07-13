@@ -13,108 +13,134 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
-            <h1 class="logo">MiuBank</h1>
-            <nav class="navbar">
-                <button class="navbar-toggler" aria-label="Abrir menu">
-                    <span></span><span></span><span></span>
+            <h1 class="logo" aria-label="Logotipo MiuBank">MiuBank</h1>
+            <nav class="navbar" role="navigation" aria-label="Menu Principal">
+                <button class="navbar-toggler" aria-label="Abrir e fechar menu de navegação">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link active">Dashboard</a></li>
-                    <li><a href="transfer.html" class="nav-link">Transferir</a></li>
-                    <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
-                    <li><a href="reports.html" class="nav-link">Relatórios</a></li>
-                    <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
+                    <li><a href="index.html" class="nav-link active" aria-current="page">Dashboard</a></li>
+                    <li><a href="transfer.html" class="nav-link">Transferir Dinheiro</a></li>
+                    <li><a href="buy-assets.html" class="nav-link">Investir em Ativos</a></li>
+                    <li><a href="reports.html" class="nav-link">Ver Relatórios Financeiros</a></li>
+                    <li><a href="#" id="logoutButton" class="nav-link">Sair da Conta</a></li>
                     <li><button id="contrastModeToggle" class="btn-icon"
-                            aria-label="Alternar modo de alto contraste">контраст</button></li>
+                            aria-label="Alternar modo de alto contraste">Alto Contraste</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container dashboard-main">
-        <aside class="sidebar">
-            <div class="user-info card">
-                <h2 id="userName" class="text-center">Olá, Usuário!</h2>
+    <main class="container dashboard-main" role="main">
+        <aside class="sidebar" role="complementary" aria-label="Informações do Usuário e Ações Rápidas">
+            <div class="user-info card" role="region" aria-label="Informações do Usuário e Mascote">
+                <h2 id="userName" class="text-center" aria-live="polite" aria-atomic="true">Olá, Usuário!</h2>
                 <div class="pet-section text-center">
-                    <img id="petImage" src="/src/assets/images/cat-neutral.svg" alt="Seu Pet Financeiro"
-                        class="pet-img">
-                    <p id="petMoodText" class="text-secondary">Humor: Carregando...</p>
-                    <p id="petPointsText" class="text-secondary">Pontos: Carregando...</p>
+                    <img id="petImage" src="/src/assets/images/cat-neutral.svg"
+                        alt="Seu mascote financeiro, o Miu. Humor atual: Carregando." class="pet-img">
+                    <p id="petMoodText" class="text-secondary" aria-live="polite" aria-atomic="true">Humor do Miu:
+                        Carregando...</p>
+                    <p id="petPointsText" class="text-secondary" aria-live="polite" aria-atomic="true">Pontos de
+                        Gamificação: Carregando...</p>
                 </div>
             </div>
 
-            <nav class="quick-actions card u-margin-top-md">
+            <nav class="quick-actions card u-margin-top-md" role="navigation" aria-label="Ações Rápidas da Conta">
                 <h3 class="text-center">Ações Rápidas</h3>
                 <ul class="action-list">
-                    <li><a href="deposit.html" class="btn btn-secondary btn-full">Depositar</a></li>
-                    <li><a href="withdraw.html" class="btn btn-secondary btn-full">Sacar</a></li>
-                    <li><a href="transfer.html" class="btn btn-secondary btn-full">Transferir</a></li>
-                    <li><a href="buy-assets.html" class="btn btn-secondary btn-full">Investir</a></li>
-                    <li><a href="reports.html" class="btn btn-secondary btn-full">Relatórios</a></li>
+                    <li><a href="deposit.html" class="btn btn-secondary btn-full"
+                            aria-label="Ir para a página de Depositar Dinheiro">Depositar</a></li>
+                    <li><a href="withdraw.html" class="btn btn-secondary btn-full"
+                            aria-label="Ir para a página de Sacar Dinheiro">Sacar</a></li>
+                    <li><a href="transfer.html" class="btn btn-secondary btn-full"
+                            aria-label="Ir para a página de Transferir Fundos">Transferir</a></li>
+                    <li><a href="buy-assets.html" class="btn btn-secondary btn-full"
+                            aria-label="Ir para a página de Investir em Ativos">Investir</a></li>
+                    <li><a href="reports.html" class="btn btn-secondary btn-full"
+                            aria-label="Ir para a página de Relatórios Financeiros">Relatórios</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <section class="main-content">
-            <div class="account-summary card">
-                <h2>Saldos</h2>
+        <section class="main-content" role="region" aria-label="Conteúdo Principal da Dashboard">
+            <div class="account-summary card" role="group" aria-label="Resumo de Saldos das Contas">
+                <h2>Saldos Disponíveis</h2>
                 <div class="balance-item">
                     <h3>Conta Corrente</h3>
-                    <p id="currentAccountBalance" class="balance-value">R$ 0,00</p>
+                    <p id="currentAccountBalance" class="balance-value" aria-live="polite" aria-atomic="true">R$ 0,00
+                    </p>
                 </div>
                 <div class="balance-item">
                     <h3>Conta Investimento</h3>
-                    <p id="investmentAccountBalance" class="balance-value">R$ 0,00</p>
+                    <p id="investmentAccountBalance" class="balance-value" aria-live="polite" aria-atomic="true">R$ 0,00
+                    </p>
                 </div>
             </div>
 
-            <div class="recent-transactions card u-margin-top-md">
+            <div class="recent-transactions card u-margin-top-md" role="region"
+                aria-label="Últimas Movimentações Financeiras">
                 <h2>Últimas Movimentações</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Tipo</th>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody id="transactionHistoryBody">
-                        <tr>
-                            <td colspan="4" class="text-center text-secondary">Nenhuma movimentação recente.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive" role="group" aria-label="Tabela de Histórico de Transações">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data da Movimentação</th>
+                                <th scope="col">Tipo de Operação</th>
+                                <th scope="col">Descrição da Movimentação</th>
+                                <th scope="col">Valor da Transação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionHistoryBody">
+                            <tr>
+                                <td colspan="4" class="text-center text-secondary">Nenhuma movimentação recente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <p class="text-center u-margin-top-sm">
-                    <a href="reports.html?accountType=CORRENTE" class="link">Ver extrato completo</a>
+                    <a href="reports.html?accountType=CORRENTE" class="link"
+                        aria-label="Ver extrato completo da Conta Corrente">Ver extrato completo</a>
                 </p>
             </div>
 
-            <div class="financial-tips card u-margin-top-md">
+            <div class="financial-tips card u-margin-top-md" role="region" aria-label="Pílula de Riqueza do Dia">
                 <h2>Pílulas de Riqueza</h2>
-                <div id="financialTipContent" class="tip-item">
+                <div id="financialTipContent" class="tip-item" aria-live="polite" aria-atomic="true">
                     Carregando dica...
                 </div>
-                <button id="refreshTipBtn" class="btn btn-secondary btn-sm u-margin-top-sm">Nova Dica</button>
+                <button id="refreshTipBtn" class="btn btn-secondary btn-sm u-margin-top-sm"
+                    aria-label="Carregar nova pílula de riqueza">Nova Dica</button>
             </div>
 
-            <div class="financial-goals card u-margin-top-md">
+            <div class="financial-goals card u-margin-top-md" role="region" aria-label="Suas Metas Financeiras">
                 <h2>Minhas Metas Financeiras</h2>
                 <div id="financialGoalsList" class="goals-list">
-                    <p class="text-center text-secondary" id="noGoalsMessage">Você ainda não tem metas. Crie uma!</p>
+                    <p class="text-center text-secondary" id="noGoalsMessage" aria-live="polite" aria-atomic="true">Você
+                        ainda não tem metas. Crie uma!</p>
                 </div>
-                <button id="createGoalBtn" class="btn btn-primary u-margin-top-md">Criar Nova Meta</button>
+                <button id="createGoalBtn" class="btn btn-primary u-margin-top-md"
+                    aria-label="Criar uma nova meta financeira">Criar Nova Meta</button>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2025 MiuBank. desenvolvido por Eduarda Silva Santos</p>
         <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
+
+    <div vw class="enabled" role="region" aria-label="Widget VLibras de acessibilidade em Libras">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper aria-label="Conteúdo do plugin VLibras">
+            <div class="vw-plugin-top-wrapper" aria-hidden="true"></div>
+        </div>
+    </div>
+
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
