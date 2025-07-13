@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="src/css/theme.css">
     <link rel="stylesheet" href="src/css/components.css">
     <link rel="stylesheet" href="src/css/utilities.css">
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
 </head>
 
 <body>
@@ -22,21 +18,16 @@
             <h1 class="logo">MiuBank</h1>
             <nav class="navbar">
                 <button class="navbar-toggler" aria-label="Abrir menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="transfer.html" class="nav-link">Transferir</a></li>
+                    <li><a href="transfer.html" class="nav-link active">Transferir</a></li>
                     <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
                     <li><a href="reports.html" class="nav-link">Relatórios</a></li>
                     <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
-                    <li>
-                        <button id="contrastModeToggle" class="btn-icon" aria-label="Alternar modo de alto contraste">
-                            contraste
-                        </button>
-                    </li>
+                    <li><button id="contrastModeToggle" class="btn-icon"
+                            aria-label="Alternar modo de alto contraste">контраст</button></li>
                 </ul>
             </nav>
         </div>
@@ -52,7 +43,7 @@
                     <input type="number" id="depositAmount" name="amount" placeholder="Ex: 100.00" step="0.01"
                         min="0.01" required>
                 </div>
-                <p>Saldo atual da Conta Corrente: <span id="currentAccountBalanceDeposit">R$ 0,00</span></p>
+                <p>Saldo atual da Conta Corrente: <span id="currentAccountBalanceDeposit">Carregando...</span></p>
                 <button type="submit" class="btn btn-primary">Confirmar Depósito</button>
                 <div id="depositMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
             </form>
@@ -61,41 +52,17 @@
 
     <footer class="footer">
         <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+        <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
+                class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
 
-    <script src="src/js/api.js"></script>
-    <script src="src/js/main.js"></script>
-    <script src="src/js/transactions.js"></script>
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiuBank - Dashboard</title>
-    <link rel="stylesheet" href="src/css/base.css">
-    <link rel="stylesheet" href="src/css/layout.css">
-    <link rel="stylesheet" href="src/css/theme.css">
-    <link rel="stylesheet" href="src/css/components.css">
-    <link rel="stylesheet" href="src/css/utilities.css">
-</head>
-
-<body>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
     <script src="src/js/api.js" type="module"></script>
     <script src="src/js/main.js" type="module"></script>
-    <script src="src/js/pet.js" type="module"></script>
     <script src="src/js/transactions.js" type="module"></script>
-    <script src="src/js/investments.js" type="module"></script>
-    <script src="src/js/reports.js" type="module"></script>
 </body>
 
 </html>

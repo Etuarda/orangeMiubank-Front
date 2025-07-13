@@ -1,1 +1,89 @@
- 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiuBank - Transferência</title>
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/layout.css">
+    <link rel="stylesheet" href="src/css/theme.css">
+    <link rel="stylesheet" href="src/css/components.css">
+    <link rel="stylesheet" href="src/css/utilities.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MiuBank</h1>
+            <nav class="navbar">
+                <button class="navbar-toggler" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="transfer.html" class="nav-link active">Transferir</a></li>
+                    <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
+                    <li><a href="reports.html" class="nav-link">Relatórios</a></li>
+                    <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
+                    <li><button id="contrastModeToggle" class="btn-icon"
+                            aria-label="Alternar modo de alto contraste">контраст</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container content-page">
+        <section class="card form-section">
+            <h1 class="text-center">Realizar Transferência</h1>
+            <p class="text-center text-secondary">Transfira entre suas contas ou para outro usuário.</p>
+            <form id="transferForm" class="form">
+                <div class="form-group">
+                    <label for="transferType">Tipo de Transferência</label>
+                    <select id="transferType" name="transferType" required>
+                        <option value="">Selecione...</option>
+                        <option value="internal_cc_ci">Interna: Conta Corrente para Conta Investimento</option>
+                        <option value="internal_ci_cc">Interna: Conta Investimento para Conta Corrente</option>
+                        <option value="external_cc_cc">Externa: Conta Corrente para Outro Usuário</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="transferAmount">Valor da Transferência (R$)</label>
+                    <input type="number" id="transferAmount" name="amount" placeholder="Ex: 50.00" step="0.01"
+                        min="0.01" required>
+                </div>
+
+                <div id="recipientCpfGroup" class="form-group u-hidden">
+                    <label for="recipientCpf">CPF do Destinatário</label>
+                    <input type="text" id="recipientCpf" name="recipientCpf" placeholder="XXX.XXX.XXX-XX"
+                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                </div>
+
+                <div class="balance-info">
+                    <p>Saldo Conta Corrente: <span id="currentAccountBalanceTransfer">Carregando...</span></p>
+                    <p>Saldo Conta Investimento: <span id="investmentAccountBalanceTransfer">Carregando...</span></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Confirmar Transferência</button>
+                <div id="transferMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
+        <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
+                class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
+    </footer>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="src/js/api.js" type="module"></script>
+    <script src="src/js/main.js" type="module"></script>
+    <script src="src/js/transactions.js" type="module"></script>
+</body>
+
+</html>
