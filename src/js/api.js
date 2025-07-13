@@ -1,6 +1,6 @@
 // src/js/api.js
 
-const API_BASE_URL = 'https://orangemiubank.onrender.com'; // **VERIFIQUE SE ESTÁ EXATAMENTE ASSIM!**
+const API_BASE_URL = 'https://orangemiubank.onrender.com'; // SEU LINK DEPLOY
 
 export async function apiRequest(endpoint, method = 'GET', data = null, requiresAuth = false) {
     const url = `${API_BASE_URL}${endpoint}`;
@@ -42,7 +42,7 @@ export async function apiRequest(endpoint, method = 'GET', data = null, requires
             throw error;
         }
 
-        if (response.status === 204) {
+        if (response.status === 204) { // No Content
             return {};
         }
 
@@ -53,6 +53,7 @@ export async function apiRequest(endpoint, method = 'GET', data = null, requires
     }
 }
 
+// Mapeamento de funções da API para facilitar o uso no frontend
 export const api = {
     auth: {
         register: (userData) => apiRequest('/auth/register', 'POST', userData),
@@ -91,10 +92,17 @@ export const api = {
             return apiRequest(`/reports/tax-report${query}`, 'GET', null, true);
         },
     },
+    // user.getProfile agora busca dados que incluem pontos do user e pet (APÓS ATUALIZAÇÃO DO BACKEND)
     user: {
         getProfile: () => apiRequest('/user/profile', 'GET', null, true),
     },
-    financialGoals: {
+    // NOVO: Métodos para Pílulas de Riqueza (AGORA SUPORTADO PELO BACKEND)
+    financialTips: {
+        getAll: () => apiRequest('/financial-tips', 'GET', null, true),
+        getRandom: () => apiRequest('/financial-tips/random', 'GET', null, true),
+    },
+    // Métodos para Metas Financeiras
+    goals: {
         createGoal: (data) => apiRequest('/goals', 'POST', data, true),
         getGoals: () => apiRequest('/goals', 'GET', null, true),
         updateGoalProgress: (goalId, amountAdded) => apiRequest(`/goals/${goalId}/track-progress`, 'PATCH', { amountAdded }, true),

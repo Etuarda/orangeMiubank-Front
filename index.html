@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="src/css/theme.css">
     <link rel="stylesheet" href="src/css/components.css">
     <link rel="stylesheet" href="src/css/utilities.css">
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
 </head>
 
 <body>
@@ -22,9 +18,7 @@
             <h1 class="logo">MiuBank</h1>
             <nav class="navbar">
                 <button class="navbar-toggler" aria-label="Abrir menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link active">Dashboard</a></li>
@@ -32,11 +26,8 @@
                     <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
                     <li><a href="reports.html" class="nav-link">Relatórios</a></li>
                     <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
-                    <li>
-                        <button id="contrastModeToggle" class="btn-icon" aria-label="Alternar modo de alto contraste">
-                            контраст
-                        </button>
-                    </li>
+                    <li><button id="contrastModeToggle" class="btn-icon"
+                            aria-label="Alternar modo de alto contraste">контраст</button></li>
                 </ul>
             </nav>
         </div>
@@ -47,9 +38,10 @@
             <div class="user-info card">
                 <h2 id="userName" class="text-center">Olá, Usuário!</h2>
                 <div class="pet-section text-center">
-                    <img id="petImage" src="src/assets/images/cat-neutral.svg" alt="Seu Pet Financeiro" class="pet-img">
-                    <p id="petMoodText" class="text-secondary">Humor: Neutro</p>
-                    <p id="petPointsText" class="text-secondary">Pontos: 0</p>
+                    <img id="petImage" src="/src/assets/images/cat-neutral.svg" alt="Seu Pet Financeiro"
+                        class="pet-img">
+                    <p id="petMoodText" class="text-secondary">Humor: Carregando...</p>
+                    <p id="petPointsText" class="text-secondary">Pontos: Carregando...</p>
                 </div>
             </div>
 
@@ -102,62 +94,31 @@
 
             <div class="financial-tips card u-margin-top-md">
                 <h2>Pílulas de Riqueza</h2>
-                <div id="financialTipsContainer" class="tips-grid">
-                    <div class="tip-item">
-                        <h4>Aprenda a investir!</h4>
-                        <p>Seu pet vai te agradecer por cada real investido. Comece a explorar o mercado!</p>
-                    </div>
+                <div id="financialTipContent" class="tip-item">
+                    Carregando dica...
                 </div>
+                <button id="refreshTipBtn" class="btn btn-secondary btn-sm u-margin-top-sm">Nova Dica</button>
             </div>
 
             <div class="financial-goals card u-margin-top-md">
                 <h2>Minhas Metas Financeiras</h2>
-                <div id="financialGoalsContainer" class="goals-list">
-                    <p class="text-center text-secondary">Nenhuma meta definida ainda.</p>
-                    <button class="btn btn-secondary u-margin-top-sm">Criar Nova Meta</button>
+                <div id="financialGoalsList" class="goals-list">
+                    <p class="text-center text-secondary" id="noGoalsMessage">Você ainda não tem metas. Crie uma!</p>
                 </div>
+                <button id="createGoalBtn" class="btn btn-primary u-margin-top-md">Criar Nova Meta</button>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <p>&copy; 2025 MiuBank. Todos os direitos reservados.</p>
-        <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste">
-            <span class="sr-only">Alto Contraste</span>
-            <span aria-hidden="true">🌓</span>
-        </button>
+        <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
+                class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
-
-    <script src="src/js/api.js" type="module"></script>
-    <script src="src/js/main.js" type="module"></script>
-    <script src="src/js/pet.js" type="module"></script>
-    <script src="src/js/transactions.js" type="module"></script>
-    <script src="src/js/investments.js" type="module"></script>
-    <script src="src/js/reports.js" type="module"></script>
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiuBank - Dashboard</title>
-    <link rel="stylesheet" href="src/css/base.css">
-    <link rel="stylesheet" href="src/css/layout.css">
-    <link rel="stylesheet" href="src/css/theme.css">
-    <link rel="stylesheet" href="src/css/components.css">
-    <link rel="stylesheet" href="src/css/utilities.css">
-</head>
-
-<body>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
     <script src="src/js/api.js" type="module"></script>
     <script src="src/js/main.js" type="module"></script>
     <script src="src/js/pet.js" type="module"></script>
