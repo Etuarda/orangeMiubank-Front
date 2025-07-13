@@ -1,0 +1,71 @@
+ /* src/css/theme.css */
+
+ :root {
+     /* Paleta de Cores (tons de marrons frios acinzentados - pastel) */
+     --color-primary: #8B7355;
+     /* Um taupe (marrom-acinzentado médio) */
+     --color-secondary: #A9A9A9;
+     /* Cinza grafite claro */
+     --color-tertiary: #C0C0C0;
+     /* Cinza prateado */
+     --color-accent: #D2B48C;
+     /* Um marrom mais claro, areia */
+
+     --color-background: #F5F5DC;
+     /* Bege queimado pastel (quase creme) */
+     --color-card-bg: #FFFFFF;
+     /* Fundo dos cards */
+     --color-header-bg: #E0E0D6;
+     /* Cinza claro para cabeçalho/rodapé */
+     --color-border: #B0B0A6;
+     /* Borda dos elementos */
+
+     --color-text: #36454F;
+     /* Cinza carvão para texto principal */
+     --color-heading: #554433;
+     /* Marrom escuro para títulos */
+     --color-success: #28a745;
+     /* Verde para sucesso */
+     --color-error: #dc3545;
+     /* Vermelho para erro */
+
+     /* Sombras suaves para efeito cartoon/retrô */
+     --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.1);
+     --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.15);
+ }
+
+ /* Modo de Alto Contraste */
+ body.contrast-mode {
+     --color-primary: #FFFF00;
+     /* Amarelo vibrante */
+     --color-secondary: #0000FF;
+     /* Azul vibrante */
+     --color-tertiary: #FFFFFF;
+     /* Branco puro */
+     --color-accent: #FF00FF;
+     /* Magenta */
+
+     --color-background: #000000;
+     /* Fundo preto */
+     --color-card-bg: #000000;
+     /* Cards pretos */
+     --color-header-bg: #000000;
+     /* Cabeçalho/rodapé pretos */
+     --color-border: #FFFFFF;
+     /* Bordas brancas */
+
+     --color-text: #FFFFFF;
+     /* Texto branco */
+     --color-heading: #FFFF00;
+     /* Títulos amarelos */
+     --color-success: #00FF00;
+     /* Verde neon */
+     --color-error: #FF0000;
+     /* Vermelho vibrante */
+
+     --shadow-small: none;
+     --shadow-medium: none;
+
+     /* Aumentar espaçamento e espessura de bordas para maior clareza */
+     line-height: 1.8;
+ }

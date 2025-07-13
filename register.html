@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiuBank - Cadastro</title>
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/layout.css">
+    <link rel="stylesheet" href="src/css/theme.css">
+    <link rel="stylesheet" href="src/css/components.css">
+    <link rel="stylesheet" href="src/css/utilities.css">
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</head>
+
+<body>
+    <main class="register-container">
+        <section class="register-card card">
+            <h1 class="text-center">Crie sua Conta MiuBank!</h1>
+            <p class="text-center text-secondary">Comece sua jornada financeira com seu pet.</p>
+            <form id="registerForm" class="form">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres" required
+                        minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" required
+                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Data de Nascimento</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <p class="text-center u-margin-top-md">
+                    Já tem conta? <a href="login.html" class="link">Faça login</a>
+                </p>
+                <div id="registerMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+            </form>
+        </section>
+    </main>
+    <script src="src/js/api.js" type="module"></script>
+    <script src="src/js/main.js" type="module"></script>
+    <script src="src/js/auth.js" type="module"></script>
+</body>
+
+</html>

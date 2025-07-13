@@ -1,0 +1,173 @@
+ /* src/css/components.css */
+
+ /* Cards - Efeito pôster retrô */
+ .card {
+     background-color: var(--color-card-bg);
+     border: 2px solid var(--color-border);
+     border-radius: 10px;
+     /* Arredondado */
+     box-shadow: var(--shadow-medium);
+     /* Sombra suave */
+     padding: 1.5rem;
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+ }
+
+ .card:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+ }
+
+ /* Botões */
+ .btn {
+     display: inline-block;
+     padding: 0.8rem 1.5rem;
+     border: 2px solid transparent;
+     border-radius: 8px;
+     /* Arredondado */
+     font-family: 'Roboto Mono', monospace;
+     font-size: 1rem;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     text-align: center;
+     text-decoration: none;
+ }
+
+ .btn-primary {
+     background-color: var(--color-primary);
+     color: white;
+     border-color: var(--color-primary);
+ }
+
+ .btn-primary:hover {
+     background-color: #7A6148;
+     /* Tom mais escuro de primary */
+     border-color: #7A6148;
+ }
+
+ .btn-secondary {
+     background-color: var(--color-secondary);
+     color: white;
+     border-color: var(--color-secondary);
+ }
+
+ .btn-secondary:hover {
+     background-color: #909090;
+     /* Tom mais escuro de secondary */
+     border-color: #909090;
+ }
+
+ .btn-icon {
+     background: none;
+     border: none;
+     color: var(--color-text);
+     font-size: 1.2rem;
+     cursor: pointer;
+     padding: 0.5rem;
+     transition: color 0.3s ease;
+ }
+
+ .btn-icon:hover {
+     color: var(--color-primary);
+ }
+
+ .btn-full {
+     width: 100%;
+ }
+
+ /* Formulários */
+ .form {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+ }
+
+ .form-group {
+     margin-bottom: 0.5rem;
+ }
+
+ .form-group label {
+     display: block;
+     margin-bottom: 0.5rem;
+     font-weight: bold;
+     color: var(--color-text);
+ }
+
+ .form-group input[type="text"],
+ .form-group input[type="email"],
+ .form-group input[type="password"],
+ .form-group input[type="number"],
+ .form-group input[type="date"],
+ .form-group select {
+     width: 100%;
+     padding: 0.8rem;
+     border: 2px solid var(--color-border);
+     border-radius: 5px;
+     font-family: 'Roboto Mono', monospace;
+     font-size: 1rem;
+     background-color: var(--color-card-bg);
+     color: var(--color-text);
+     transition: border-color 0.3s ease;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus {
+     outline: none;
+     border-color: var(--color-primary);
+     box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+     /* Exemplo de foco */
+ }
+
+ /* Mensagens de feedback */
+ .message {
+     padding: 1rem;
+     border-radius: 8px;
+     font-weight: bold;
+     text-align: center;
+ }
+
+ .message.success {
+     background-color: var(--color-success);
+     color: white;
+ }
+
+ .message.error {
+     background-color: var(--color-error);
+     color: white;
+ }
+
+ /* Tabelas de Dados */
+ .data-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 1rem;
+ }
+
+ .data-table th,
+ .data-table td {
+     padding: 0.8rem;
+     border: 1px solid var(--color-border);
+     text-align: left;
+     color: var(--color-text);
+ }
+
+ .data-table th {
+     background-color: var(--color-header-bg);
+     font-family: 'Press Start 2P', cursive;
+     font-size: 0.9rem;
+ }
+
+ .data-table tbody tr:nth-child(even) {
+     background-color: var(--color-background);
+ }
+
+ .data-table tbody tr:nth-child(odd) {
+     background-color: var(--color-card-bg);
+ }
+
+ /* Pet Image */
+ .pet-img {
+     max-width: 150px;
+     height: auto;
+     margin: 1rem auto;
+     display: block;
+ }

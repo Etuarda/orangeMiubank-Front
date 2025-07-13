@@ -1,0 +1,94 @@
+/* src/css/base.css */
+
+/* Importação de fontes (Exemplos: substitua pelas suas escolhas de fontes retro) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Para títulos */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+/* Para corpo de texto */
+
+/* Reset básico e box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    /* Base para rem */
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    /* Fonte do corpo de texto */
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos globais para links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Press Start 2P', cursive;
+    /* Fonte para títulos */
+    color: var(--color-heading);
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+/* Placeholder para o VLibras para evitar obstrução */
+body #vlibras {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Esconder conteúdo para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

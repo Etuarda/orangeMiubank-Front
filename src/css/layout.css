@@ -1,0 +1,251 @@
+/* src/css/layout.css */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.header {
+    background-color: var(--color-header-bg);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--color-border);
+    box-shadow: var(--shadow-small);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: var(--color-heading);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.navbar .nav-link {
+    color: var(--color-text);
+    font-weight: bold;
+    padding: 0.5rem 0;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.navbar-toggler {
+    display: none;
+    /* Esconde por padrão em desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text);
+    width: 30px;
+    height: 20px;
+    position: relative;
+    padding: 0;
+}
+
+.navbar-toggler span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-text);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 0;
+}
+
+.navbar-toggler span:nth-child(1) {
+    top: 0;
+}
+
+.navbar-toggler span:nth-child(2) {
+    top: 8px;
+}
+
+.navbar-toggler span:nth-child(3) {
+    top: 16px;
+}
+
+.navbar-toggler.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Responsividade da Navbar */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        /* Esconde por padrão em mobile */
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        background-color: var(--color-header-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem;
+        border-top: 1px solid var(--color-border);
+        box-shadow: var(--shadow-small);
+    }
+
+    .navbar .nav-links.active {
+        display: flex;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .header .container {
+        flex-wrap: nowrap;
+    }
+}
+
+/* Layout principal da dashboard */
+.dashboard-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Padrão para mobile: uma coluna */
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+}
+
+/* Sidebar em mobile - pode ser escondida ou abaixo do conteúdo principal */
+.sidebar {
+    order: 2;
+    /* Move a sidebar para baixo em mobile */
+}
+
+.main-content {
+    order: 1;
+    /* Mantém o conteúdo principal no topo em mobile */
+}
+
+@media (min-width: 768px) {
+    .dashboard-main {
+        grid-template-columns: 280px 1fr;
+        /* Sidebar de 280px e conteúdo principal */
+    }
+
+    .sidebar {
+        order: unset;
+        /* Reseta a ordem em desktop */
+    }
+
+    .main-content {
+        order: unset;
+        /* Reseta a ordem em desktop */
+    }
+}
+
+/* Estilos para login/registro e outras páginas de conteúdo */
+.login-container,
+.register-container,
+.content-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    /* Ajusta para considerar header/footer */
+    padding: 1rem;
+    /* Adiciona padding para telas pequenas */
+    flex-direction: column;
+    /* Permite empilhar em telas pequenas */
+}
+
+.login-card,
+.register-card,
+.form-section {
+    max-width: 450px;
+    /* Largura máxima para formulários */
+    width: 100%;
+    padding: 2rem;
+    box-shadow: var(--shadow-medium);
+}
+
+/* Tabelas responsivas */
+.data-table {
+    width: 100%;
+    overflow-x: auto;
+    /* Permite scroll horizontal em tabelas grandes */
+    display: block;
+    /* Garante que o overflow funcione */
+    white-space: nowrap;
+    /* Impede que o conteúdo da célula quebre */
+}
+
+/* Dicas financeiras e Metas (grid responsivo) */
+.tips-grid,
+.goals-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Colunas flexíveis */
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-header-bg);
+    color: var(--color-text);
+    text-align: center;
+    padding: 1rem;
+    /* Ajuste para padding uniforme */
+    border-top: 2px solid var(--color-border);
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebrar em várias linhas */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Ajustes gerais para mobile */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    /* Reduzir espaçamento vertical entre itens da navbar em mobile */
+    .navbar .nav-links.active li {
+        padding: 0.25rem 0;
+    }
+}

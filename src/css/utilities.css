@@ -1,0 +1,81 @@
+ /* src/css/utilities.css */
+
+ /* Classes de Margem */
+ .u-margin-top-sm {
+     margin-top: 0.5rem !important;
+ }
+
+ .u-margin-top-md {
+     margin-top: 1rem !important;
+ }
+
+ .u-margin-top-lg {
+     margin-top: 2rem !important;
+ }
+
+ .u-margin-bottom-sm {
+     margin-bottom: 0.5rem !important;
+ }
+
+ .u-margin-bottom-md {
+     margin-bottom: 1rem !important;
+ }
+
+ .u-margin-bottom-lg {
+     margin-bottom: 2rem !important;
+ }
+
+ /* Classes de Texto */
+ .text-center {
+     text-align: center !important;
+ }
+
+ .text-right {
+     text-align: right !important;
+ }
+
+ .text-left {
+     text-align: left !important;
+ }
+
+ .text-secondary {
+     color: var(--color-secondary) !important;
+ }
+
+ /* Classes de Exibição */
+ .u-hidden {
+     display: none !important;
+ }
+
+ .u-block {
+     display: block !important;
+ }
+
+ .u-inline-block {
+     display: inline-block !important;
+ }
+
+ .u-flex {
+     display: flex !important;
+ }
+
+ .u-grid {
+     display: grid !important;
+ }
+
+ /* Classes de Alinhamento Flex/Grid */
+ .u-align-items-center {
+     align-items: center !important;
+ }
+
+ .u-justify-content-center {
+     justify-content: center !important;
+ }
+
+ .u-flex-column {
+     flex-direction: column !important;
+ }
+
+ .u-gap-md {
+     gap: 1rem !important;
+ }

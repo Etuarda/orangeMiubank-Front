@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiuBank - Login</title>
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/layout.css">
+    <link rel="stylesheet" href="src/css/theme.css">
+    <link rel="stylesheet" href="src/css/components.css">
+    <link rel="stylesheet" href="src/css/utilities.css">
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</head>
+
+<body>
+    <main class="login-container">
+        <section class="login-card card">
+            <h1 class="text-center">Bem-vindo(a) ao MiuBank!</h1>
+            <p class="text-center text-secondary">Acesse sua conta para cuidar do seu pet financeiro.</p>
+            <form id="loginForm" class="form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <p class="text-center u-margin-top-md">
+                    Não tem conta? <a href="register.html" class="link">Cadastre-se</a>
+                </p>
+                <div id="loginMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
+            </form>
+        </section>
+    </main>
+    <script src="src/js/api.js" type="module"></script>
+    <script src="src/js/main.js" type="module"></script>
+    <script src="src/js/auth.js" type="module"></script>
+</body>
+
+</html>
