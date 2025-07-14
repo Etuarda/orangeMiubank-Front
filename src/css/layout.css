@@ -4,11 +4,15 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
+    /* Bom padding padrão */
 }
 
+/* * HEADER 
+ */
 .header {
     background-color: var(--color-header-bg);
-    padding: 1rem 0;
+    padding: 1rem;
+    /* Padding uniforme */
     border-bottom: 2px solid var(--color-border);
     box-shadow: var(--shadow-small);
     position: sticky;
@@ -20,13 +24,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    /* A remoção de flex-wrap aqui é intencional para manter logo e toggler lado a lado em mobile. */
+    /* A quebra para o menu navbar-links será gerenciada pelas media queries. */
 }
 
 .logo {
     color: var(--color-heading);
     font-size: 2rem;
     margin: 0;
+    /* Propriedade para garantir que o logo não seja espremido */
+    flex-shrink: 0;
 }
 
 .navbar .nav-links {
@@ -52,7 +59,6 @@
 
 .navbar-toggler {
     display: none;
-    /* Esconde por padrão em desktop */
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -62,6 +68,7 @@
     height: 20px;
     position: relative;
     padding: 0;
+    z-index: 1000;
 }
 
 .navbar-toggler span {
@@ -99,12 +106,10 @@
     transform: translateY(-8px) rotate(-45deg);
 }
 
-
 /* Responsividade da Navbar */
 @media (max-width: 768px) {
     .navbar .nav-links {
         display: none;
-        /* Esconde por padrão em mobile */
         flex-direction: column;
         width: 100%;
         gap: 0.5rem;
@@ -115,6 +120,13 @@
         padding: 1rem;
         border-top: 1px solid var(--color-border);
         box-shadow: var(--shadow-small);
+        box-sizing: border-box;
+        /* Adicionado para garantir que o menu ocupe toda a largura */
+
+        /* Ajuste para garantir que o menu se estenda por toda a largura da viewport,
+           caso o .container tenha um padding que o limite. */
+        left: 0;
+        right: 0;
     }
 
     .navbar .nav-links.active {
@@ -127,80 +139,91 @@
 
     .header .container {
         flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        margin-right: auto;
     }
 }
 
-/* Layout principal da dashboard */
+/* * LAYOUT PRINCIPAL (DASHBOARD E CONTENT PAGES)
+ */
 .dashboard-main {
     display: grid;
     grid-template-columns: 1fr;
-    /* Padrão para mobile: uma coluna */
     gap: 1.5rem;
     padding: 1.5rem 1rem;
 }
 
-/* Sidebar em mobile - pode ser escondida ou abaixo do conteúdo principal */
 .sidebar {
     order: 2;
-    /* Move a sidebar para baixo em mobile */
+    padding: 0 1rem;
+    /* Garante padding em mobile */
 }
 
 .main-content {
     order: 1;
-    /* Mantém o conteúdo principal no topo em mobile */
+    padding: 0 1rem;
+    /* Garante padding em mobile */
 }
 
 @media (min-width: 768px) {
     .dashboard-main {
         grid-template-columns: 280px 1fr;
-        /* Sidebar de 280px e conteúdo principal */
+        padding: 1.5rem;
     }
 
     .sidebar {
         order: unset;
-        /* Reseta a ordem em desktop */
+        padding: 0;
     }
 
     .main-content {
         order: unset;
-        /* Reseta a ordem em desktop */
+        padding: 0;
     }
 }
 
-/* Estilos para login/registro e outras páginas de conteúdo */
 .login-container,
 .register-container,
 .content-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 100px);
-    /* Ajusta para considerar header/footer */
+    min-height: calc(100vh - 120px);
     padding: 1rem;
-    /* Adiciona padding para telas pequenas */
     flex-direction: column;
-    /* Permite empilhar em telas pequenas */
+    text-align: center;
+    width: 100%;
+    /* Garante que esses containers usem a largura total disponível */
+    box-sizing: border-box;
+    /* Inclui padding e borda na largura total */
 }
 
 .login-card,
 .register-card,
 .form-section {
     max-width: 450px;
-    /* Largura máxima para formulários */
-    width: 100%;
+    width: 90%;
     padding: 2rem;
     box-shadow: var(--shadow-medium);
+    margin: 0 auto;
+    /* Garante centralização e que ocupe a largura definida */
+    box-sizing: border-box;
+    /* Importante para que o padding não estoure a largura */
 }
 
 /* Tabelas responsivas */
 .data-table {
     width: 100%;
     overflow-x: auto;
-    /* Permite scroll horizontal em tabelas grandes */
+    -webkit-overflow-scrolling: touch;
     display: block;
-    /* Garante que o overflow funcione */
-    white-space: nowrap;
-    /* Impede que o conteúdo da célula quebre */
+    /* A regra white-space: nowrap; pode ser removida se o texto nas células puder quebrar */
+    /* white-space: nowrap; */
 }
 
 /* Dicas financeiras e Metas (grid responsivo) */
@@ -208,44 +231,161 @@
 .goals-list {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* Colunas flexíveis */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
 }
 
-/* Footer */
+
+/* * FOOTER
+ */
 .footer {
     background-color: var(--color-header-bg);
     color: var(--color-text);
     text-align: center;
     padding: 1rem;
-    /* Ajuste para padding uniforme */
     border-top: 2px solid var(--color-border);
     margin-top: auto;
     display: flex;
     flex-wrap: wrap;
-    /* Permite quebrar em várias linhas */
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+    /* Garante que o footer ocupe 100% da largura */
+    box-sizing: border-box;
+    /* Inclui padding e borda na largura total */
 }
 
-/* Ajustes gerais para mobile */
+/* Ajustes específicos para telas muito pequenas (abaixo de 480px, como iPhone SE) */
 @media (max-width: 480px) {
     .logo {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .btn {
-        padding: 0.7rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
     }
 
     .card {
         padding: 1rem;
     }
 
-    /* Reduzir espaçamento vertical entre itens da navbar em mobile */
     .navbar .nav-links.active li {
-        padding: 0.25rem 0;
+        padding: 0.2rem 0;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+
+    h4 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.4rem;
+        font-size: 0.75rem;
+    }
+
+    /* Quebra de linha para o footer em telas muito pequenas */
+    .footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        /* Padding horizontal para o footer em telas muito pequenas */
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .login-card,
+    .register-card,
+    .form-section {
+        padding: 1.5rem;
+        width: 95%;
+    }
+}
+
+/* Breakpoint para tablets e desktops menores */
+@media (min-width: 481px) and (max-width: 767px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    .login-card,
+    .register-card,
+    .form-section {
+        padding: 2rem;
+        width: 80%;
+    }
+}
+
+/* Regra extra para garantir que o contêiner principal não transborde */
+body>.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+/* Regra para ajustar formulários inline em telas menores */
+.form-inline {
+    display: flex;
+    flex-direction: column;
+    /* Força empilhamento em mobile */
+    gap: 1rem;
+    /* Espaçamento entre os campos */
+}
+
+@media (min-width: 768px) {
+    .form-inline {
+        flex-direction: row;
+        /* Volta para linha em desktop */
+        align-items: flex-end;
+        /* Alinha itens na parte inferior */
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        /* Permite quebras se houver muitos campos */
+    }
+
+    .form-inline .form-group {
+        margin-bottom: 0;
+        /* Remove margem inferior para alinhamento em linha */
+    }
+
+    .form-inline button {
+        margin-left: 1rem;
+        /* Espaçamento entre o último campo e o botão */
     }
 }

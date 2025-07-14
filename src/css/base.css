@@ -17,6 +17,8 @@ html {
     /* Define 1rem como 16px */
     scroll-behavior: smooth;
     /* Rolagem suave */
+    -webkit-text-size-adjust: 100%;
+    /* Evita que o iOS mude o tamanho da fonte */
 }
 
 body {
@@ -56,13 +58,17 @@ h6 {
     line-height: 1.2;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
     /* Sombra sutil para um toque visual */
+    word-break: break-word;
+    /* Permite quebras de linha em palavras longas para títulos */
+    hyphens: auto;
+    /* Adiciona hífens se a quebra de palavra ocorrer */
 }
 
+/* Ajustes de fonte base para mobile serão em layout.css */
 h1 {
     font-size: 2.8rem;
 }
 
-/* Tamanhos de fonte responsivos via layout.css */
 h2 {
     font-size: 2.2rem;
 }

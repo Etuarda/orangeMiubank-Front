@@ -24,7 +24,7 @@
                     <li><a href="index.html" class="nav-link">Dashboard</a></li>
                     <li><a href="transfer.html" class="nav-link">Transferir</a></li>
                     <li><a href="buy-assets.html" class="nav-link">Investir</a></li>
-                    <li><a href="reports.html" class="nav-link active">Relatórios</a></li>
+                    <li><a href="reports.html" class="nav-link active" aria-current="page">Relatórios</a></li>
                     <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
                     <li><button id="contrastModeToggle" class="btn-icon"
                             aria-label="Alternar modo de alto contraste">Alto Contraste</button></li>
@@ -40,7 +40,7 @@
 
             <div class="report-section u-margin-top-md">
                 <h3>Extrato de Conta</h3>
-                <form id="statementForm" class="form-inline">
+                <form id="statementForm" class="form form-inline">
                     <div class="form-group">
                         <label for="statementAccountType">Tipo de Conta:</label>
                         <select id="statementAccountType" name="accountType">
@@ -61,22 +61,24 @@
                 <div id="statementMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
                 <div id="statementResult" class="u-margin-top-md">
                     <h4>Saldo Atual: <span id="currentStatementBalance">R$ 0,00</span></h4>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Tipo</th>
-                                <th>Descrição</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody id="statementTableBody">
-                            <tr>
-                                <td colspan="4" class="text-center text-secondary">Nenhuma movimentação para o
-                                    período/conta.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" role="group" aria-label="Tabela de Extrato de Conta">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statementTableBody">
+                                <tr>
+                                    <td colspan="4" class="text-center text-secondary">Nenhuma movimentação para o
+                                        período/conta.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -85,31 +87,32 @@
                 <button id="generateInvestmentSummaryBtn" class="btn btn-secondary">Gerar Resumo</button>
                 <div id="investmentSummaryMessage" class="message u-margin-top-md u-hidden" role="alert"></div>
                 <div id="investmentSummaryResult" class="u-margin-top-md">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Ativo</th>
-                                <th>Tipo</th>
-                                <th>Qtd.</th>
-                                <th>Preço Compra</th>
-                                <th>Preço Atual</th>
-                                <th>Valor Atual</th>
-                                <th>Lucro/Prejuízo</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody id="investmentSummaryTableBody">
-                            <tr>
-                                <td colspan="7" class="text-center text-secondary">Nenhum investimento ativo.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" role="group" aria-label="Tabela de Resumo de Investimentos">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ativo</th>
+                                    <th>Tipo</th>
+                                    <th>Qtd.</th>
+                                    <th>Preço Compra</th>
+                                    <th>Preço Atual</th>
+                                    <th>Valor Atual</th>
+                                    <th>Lucro/Prejuízo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="investmentSummaryTableBody">
+                                <tr>
+                                    <td colspan="7" class="text-center text-secondary">Nenhum investimento ativo.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <div class="report-section u-margin-top-lg">
                 <h3>Relatório de Imposto de Renda</h3>
-                <form id="taxReportForm" class="form-inline">
+                <form id="taxReportForm" class="form form-inline">
                     <div class="form-group">
                         <label for="taxReportYear">Ano:</label>
                         <input type="number" id="taxReportYear" name="year" placeholder="Ex: 2024">
@@ -129,38 +132,40 @@
                     <h4>Período: <span id="taxReportPeriod">Todos os Períodos</span></h4>
                     <p>Lucro Total Consolidado: <span id="totalProfitIR">R$ 0,00</span></p>
                     <p>Imposto Total Pago: <span id="totalTaxPaidIR">R$ 0,00</span></p>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Ativo</th>
-                                <th>Tipo</th>
-                                <th>Qtd.</th>
-                                <th>Lucro Op.</th>
-                                <th>Imposto Op.</th>
-                                <th>Data Venda</th>
-                            </tr>
-                        </thead>
-                        <tbody id="taxReportTableBody">
-                            <tr>
-                                <td colspan="6" class="text-center text-secondary">Nenhuma operação tributável.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" role="group" aria-label="Tabela de Relatório de Imposto de Renda">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ativo</th>
+                                    <th>Tipo</th>
+                                    <th>Qtd.</th>
+                                    <th>Lucro Op.</th>
+                                    <th>Imposto Op.</th>
+                                    <th>Data Venda</th>
+                                </tr>
+                            </thead>
+                            <tbody id="taxReportTableBody">
+                                <tr>
+                                    <td colspan="6" class="text-center text-secondary">Nenhuma operação tributável.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <p>&copy; 2025 MiuBank. desenvolvido por Eduarda Silva Santos.</p>
         <button id="toggleContrastBtn" class="btn-icon" aria-label="Alternar modo de alto contraste"><span
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
 
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
+    <div vw class="enabled" role="region" aria-label="Widget VLibras de acessibilidade em Libras">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper aria-label="Conteúdo do plugin VLibras">
+            <div class="vw-plugin-top-wrapper" aria-hidden="true"></div>
         </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>

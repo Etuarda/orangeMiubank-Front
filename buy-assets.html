@@ -13,22 +13,21 @@
 </head>
 
 <body>
-    <header class="header" role="banner">
+    <header class="header">
         <div class="container">
-            <h1 class="logo" aria-label="Logotipo MiuBank">MiuBank</h1>
-            <nav class="navbar" role="navigation" aria-label="Menu Principal">
-                <button class="navbar-toggler" aria-label="Abrir e fechar menu de navegação">
-                    <span aria-hidden="true"></span>
+            <h1 class="logo">MiuBank</h1>
+            <nav class="navbar"> <button class="navbar-toggler" aria-label="Abrir menu"> <span
+                        aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </button>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="transfer.html" class="nav-link">Transferir Dinheiro</a></li>
-                    <li><a href="buy-assets.html" class="nav-link active" aria-current="page">Investir em Ativos</a>
+                    <li><a href="transfer.html" class="nav-link">Transferir</a></li>
+                    <li><a href="buy-assets.html" class="nav-link active" aria-current="page">Investir</a>
                     </li>
-                    <li><a href="reports.html" class="nav-link">Ver Relatórios Financeiros</a></li>
-                    <li><a href="#" id="logoutButton" class="nav-link">Sair da Conta</a></li>
+                    <li><a href="reports.html" class="nav-link">Relatórios</a></li>
+                    <li><a href="#" id="logoutButton" class="nav-link">Sair</a></li>
                     <li><button id="contrastModeToggle" class="btn-icon"
                             aria-label="Alternar modo de alto contraste">Alto Contraste</button></li>
                 </ul>
@@ -99,16 +98,12 @@
                 class="sr-only">Alto Contraste</span><span aria-hidden="true">🌓</span></button>
     </footer>
 
-    <!-- INÍCIO DO BLOCO VLIBRAS -->
     <div vw class="enabled" role="region" aria-label="Widget VLibras de acessibilidade em Libras">
         <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
         <div vw-plugin-wrapper aria-label="Conteúdo do plugin VLibras">
             <div class="vw-plugin-top-wrapper" aria-hidden="true"></div>
         </div>
     </div>
-    <!-- FIM DO BLOCO VLIBRAS -->
-
-    <!-- Scripts VLibras e seus próprios scripts, no FINAL do body -->
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');

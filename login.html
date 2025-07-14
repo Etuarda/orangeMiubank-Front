@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="src/css/theme.css">
     <link rel="stylesheet" href="src/css/components.css">
     <link rel="stylesheet" href="src/css/utilities.css">
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
 </head>
 
 <body>
@@ -38,39 +34,20 @@
             </form>
         </section>
     </main>
-    <script src="src/js/api.js" type="module"></script>
-    <script src="src/js/main.js" type="module"></script>
-    <script src="src/js/auth.js" type="module"></script>
-</body>
 
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiuBank - Dashboard</title>
-    <link rel="stylesheet" href="src/css/base.css">
-    <link rel="stylesheet" href="src/css/layout.css">
-    <link rel="stylesheet" href="src/css/theme.css">
-    <link rel="stylesheet" href="src/css/components.css">
-    <link rel="stylesheet" href="src/css/utilities.css">
-</head>
-
-<body>
+    <div vw class="enabled" role="region" aria-label="Widget VLibras de acessibilidade em Libras">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper aria-label="Conteúdo do plugin VLibras">
+            <div class="vw-plugin-top-wrapper" aria-hidden="true"></div>
+        </div>
+    </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
     <script src="src/js/api.js" type="module"></script>
     <script src="src/js/main.js" type="module"></script>
-    <script src="src/js/pet.js" type="module"></script>
-    <script src="src/js/transactions.js" type="module"></script>
-    <script src="src/js/investments.js" type="module"></script>
-    <script src="src/js/reports.js" type="module"></script>
+    <script src="src/js/auth.js" type="module"></script>
 </body>
 
 </html>
